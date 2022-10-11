@@ -23,7 +23,8 @@
                                     $fn = $_POST['fName'];
                                     $mn = $_POST['mName'];
                                     $ln = $_POST['lName'];
-                                    $name=$ln . ", " . $fn . $mn;
+
+                                    $name = $ln . ", " . $fn . " " . $mn;
 
                                     $bd_day = $_POST['day'];
                                     $bd_mon = $_POST['month'];
@@ -31,11 +32,12 @@
                                     $bday = $bd_day . $bd_mon . $bd_yr;
 
                                     print "";
-
-
-                            }?>
+                                
+                                    echo $name;
+                                }
+                            ?>
                         </h3>
-                        <img id="dp">
+                        <img id="dp" >  
                     </div>
                     <div class=bar>
                         <div id=bar></div>

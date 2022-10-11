@@ -1,7 +1,7 @@
 function disp(){
-    document.getElementsByClassName("tf").disabled = true;
-    document.getElementsByClassName("dd").disabled = true;
-    document.getElementsByClassName("rd").disabled = true;
+    document.getElementsByClassName("tf").disabled == true;
+    document.getElementsByClassName("dd").disabled == true;
+    document.getElementsByClassName("rd").disabled == true;
 
     var f = document.getElementById("fName").value;
     var m = document.getElementById("mName").value;
@@ -10,6 +10,8 @@ function disp(){
 
     var outName = document.getElementById("fullName");
     var dp = document.getElementById("dp");
+
+    
     
     outName.style.fontSize = "32px";
     outName.style.marginBottom = "50px";
