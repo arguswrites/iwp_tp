@@ -3,7 +3,7 @@
 	font-size: 24px;
 }
 body{
-	background-color: #02a0a0;
+	background-color: #a020a0;
 }
 
 .form_frame{
@@ -95,7 +95,7 @@ body{
 		position:relative;
 		padding: 0 5% 10%;
 	}
-		#submit.field_4{
+		#submit{
 			position: absolute;
 			padding:10px 20px;
 			border-radius: 15px;

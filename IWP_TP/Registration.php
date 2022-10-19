@@ -4,8 +4,123 @@
 		<title>
 			Prelim Exam IWP
 		</title>
-		<link rel="stylesheet" href="files/the.css">
 		<script src="files/the.js"></script>
+        <style>
+            *{
+                font-family: Century Gothic;
+                font-size: 24px;
+            }
+            body{
+                background-color: #701070;
+            }
+
+            .form_frame{
+                background-color:#fff;
+                border: solid 4px #000;	
+                border-radius: 40px;
+                padding: 2.5%;
+                width: 60%;
+                margin: auto;
+            }
+
+                #header h2{
+                    font-size: 34px;
+                    text-align:center;
+                    padding:35px 0px;
+                }
+
+                input{
+                    font-size:20px;	
+                    padding: 5px 10px;
+                    margin:4px 0px;
+                    border-radius: 5px;
+                }
+                
+                
+                #head {
+                    margin:0 150px;
+                    text-align:center;
+                }
+
+                    #head img{
+                        display:hidden;
+                    }
+                
+                .bar{
+                    margin:20px;
+                    padding:10px;
+                }
+                    #bar{
+                        width: 80%;
+                        border: 2px solid black;
+                        background-color:black;
+                        margin:auto;
+                    }
+
+                [class*="field_"]{
+                    margin: 50px 20px 80px;
+                }
+
+                    #lName{
+                        width: 30%;
+                    } 
+                    #fName, #eMail{
+                        width: 69%;
+                    }
+                    #mName,#month{
+                        width: 25%;
+                    }
+
+                    #mobNo{
+                        width: 40%;
+                    }
+                    #age, #day{
+                        width:15%;
+                    }
+                    #height, #weight{
+                        width:10%;
+                    }
+                    
+                    #year{
+                        width:20%;
+                    }
+                    #natl, #rlg{
+                        width: 30%;
+                    }
+                    #address, #pob, #lng{
+                        width: 100%;
+                        height: 40px;
+                    }
+                    #momName, #dadName{
+                        width: 100%;
+                    }
+
+                    .field_3 input[type=number]{
+                        text-align:right;
+                    }
+
+                #btn{
+                    padding: 0 5% 0% 25%;
+                }
+                    #submit, #update, #delete, #clear{
+                        padding:10px 20px;
+                        border-radius: 15px;
+                        margin:auto;
+                        background-color: #ddf;
+                    }
+
+                .field_4{
+                    background-color: #ededed;
+                    padding: 10px;
+                }
+
+                    table{
+                        border-radius: 2px;
+                    }
+                    table, td, th{
+                        border: 2px black solid;
+                    }
+        </style>
 	</head>
 	
 	<body>
@@ -19,6 +134,23 @@
                     <div id=head>
                         <h3 id="fullName">
                             <?php 
+
+                                $user='root';
+                                $pass='';
+                                $database='db_registration';
+                                $servername="localhost";
+                                $mysqli=new mysqli($servername, $user, $pass, $database);
+
+                                if($mysqli->connect_error){
+                                    die('Connect Error ('.$mysqli->connect_errno.')'.$mysqli->connect_error);
+                                }
+
+                                $sql = "SELECT * from tbl_info";
+                                $result = $mysqli->query($sql);
+                                $mysqli -> close();
+
+        /*                                
+
                                 if(isset($_POST['submit'])){
                                     $fn = $_POST['fName'];
                                     $mn = $_POST['mName'];
@@ -30,11 +162,18 @@
                                     $bd_mon = $_POST['month'];
                                     $bd_yr = $_POST['year'];
                                     $bday = $bd_day . $bd_mon . $bd_yr;
-
-                                    print "";
                                 
                                     echo $name;
                                 }
+        
+        */
+
+                            ?>
+                            
+                            <?php                                
+                                $sql = "INSERT INTO tbl_info() VALUES ()";
+                                $result = $mysqli->query($sql);
+                                $mysqli -> close();
                             ?>
                         </h3>
                         <img id="dp" >  
@@ -57,6 +196,7 @@
                             <label><input type=radio name=rd_gen class=rd id=rd_Male value="Male">
                             Male</label>	
                             <label><input type=radio name=rd_gen class=rd id=rd_Female value="Female"> Female</label>
+                            
                         <p>Age: 
                             <select name=age class=dd id=age>
                                 <option value="0">Age</option>
@@ -197,10 +337,70 @@
                     </div>	
                     <div id="btn">
                         <button id=submit name="submit" onclick=disp()>Submit	</button>
-                    </div>
+                        <button id=update name="update">Update	</button>
+                        <button id=delete name="delete">Delete	</button>
+                        <button id=clear name="clear">Clear	</button>
+                    </div>                   
                 </div>
 		    </form>
         </div>
+        <div class=field_4>
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Middle Name</th>
+                                <th>Email</th>
+                                <th>Mobile Number</th>
+                                <th>Gender</th>
+                                <th>Age</th>
+                                <th>Day</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                                <th>Address</th>
+                                <th>Place of Birth</th>
+                                <th>Nationality</th>
+                                <th>Civil Status</th>
+                                <th>Language</th>
+                                <th>Religion</th>
+                                <th>Height</th>
+                                <th>Weight</th>
+                                <th>Mother's Name</th>
+                                <th>Father's Name</th>
+                            </tr>
+                            <?php
+                                while($row = $result->fetch_assoc())
+                                {
+                            ?>
+                                    <tr>
+                                        <td> <?php echo $row['ID']?> </td>
+                                        <td> <?php echo $row['LName']?> </td>
+                                        <td> <?php echo $row['FName']?> </td>
+                                        <td> <?php echo $row['MName']?> </td>
+                                        <td> <?php echo $row['Email']?> </td>
+                                        <td> <?php echo $row['MobNo']?> </td>
+                                        <td> <?php echo $row['Gender']?> </td>
+                                        <td> <?php echo $row['Age']?> </td>
+                                        <td> <?php echo $row['Day']?> </td>
+                                        <td> <?php echo $row['Month']?> </td>
+                                        <td> <?php echo $row['Year']?> </td>
+                                        <td> <?php echo $row['Address']?> </td>
+                                        <td> <?php echo $row['PoBirth']?> </td>
+                                        <td> <?php echo $row['Natl']?> </td>
+                                        <td> <?php echo $row['CivStat']?> </td>
+                                        <td> <?php echo $row['Lng']?> </td>
+                                        <td> <?php echo $row['Rlg']?> </td>
+                                        <td> <?php echo $row['Ht']?> </td>
+                                        <td> <?php echo $row['Wt']?> </td>
+                                        <td> <?php echo $row['MomName']?> </td>
+                                        <td> <?php echo $row['DadName']?> </td>
+                                    </tr>
+                            <?php
+                                }
+                            ?>
+                        </table>
+                    </div>
 	</body>
 
 </html>
